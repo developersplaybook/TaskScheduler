@@ -10,7 +10,6 @@ public class TaskSchedulerBackgroundService : BackgroundService
     private readonly List<ScheduledTaskConfig> _jobConfigs;
     private readonly Dictionary<string, CrontabSchedule> _schedules = new();
     private readonly Dictionary<string, DateTime> _nextRuns = new();
-    private bool firstRun = true;
 
     public TaskSchedulerBackgroundService(IOptions<List<ScheduledTaskConfig>> options, IServiceProvider serviceProvider)
     {
@@ -47,7 +46,7 @@ public class TaskSchedulerBackgroundService : BackgroundService
 
             foreach (var jobConfig in _jobConfigs.Where(j => j.Enabled))
             {
-                if (_nextRuns[jobConfig.Name] <= now || firstRun)
+                if (_nextRuns[jobConfig.Name] <= now)
                 {
                     using var scope = _serviceProvider.CreateScope();
                     var job = scope.ServiceProvider
@@ -66,7 +65,6 @@ public class TaskSchedulerBackgroundService : BackgroundService
             }
 
 
-            firstRun = false;
             await DelayUntilNextWholeMinuteAsync(stoppingToken);
         }
     }
