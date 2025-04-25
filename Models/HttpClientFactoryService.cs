@@ -11,11 +11,9 @@ namespace TaskScheduler.Models
             _httpClientFactory = httpClientFactory;
         }
 
-        public HttpClient CreateClient(string baseUrl)
+        public HttpClient CreateClient(string clientId)
         {
-            var client = _httpClientFactory.CreateClient();
-            client.BaseAddress = new Uri(baseUrl);
-            // You can configure default headers or timeouts here if needed.
+            var client = _httpClientFactory.CreateClient(clientId);
             return client;
         }
     }

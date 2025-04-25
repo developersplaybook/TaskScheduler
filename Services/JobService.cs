@@ -17,10 +17,10 @@ namespace TaskScheduler.Services
         {
             try
             {
-                var client = _httpClientFactory.CreateClient("http://localhost:63566/api/");
+                var client = _httpClientFactory.CreateClient("ClientApi");
                 client.Timeout = Timeout;
 
-                var uriBuilder = new UriBuilder("http://localhost:63566/api/jobstatus/toggle")
+                var uriBuilder = new UriBuilder($"{client.BaseAddress}jobstatus/toggle")
                 {
                     Query = $"jobName={Uri.EscapeDataString(jobName.ToString())}"
                 };
