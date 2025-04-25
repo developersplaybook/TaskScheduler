@@ -1,6 +1,6 @@
-using JobScheduler.Interfaces;
+using TaskScheduler.Interfaces;
 
-namespace JobScheduler;
+namespace TaskScheduler;
 
 public class CheckSystemHealthJob : ITimeTriggeredJob
 {

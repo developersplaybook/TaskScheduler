@@ -1,6 +1,6 @@
-﻿using JobScheduler.Interfaces;
+﻿using TaskScheduler.Interfaces;
 
-namespace JobScheduler.Models
+namespace TaskScheduler.Models
 {
     public class HttpClientFactoryService : IHttpClientFactoryService
     {

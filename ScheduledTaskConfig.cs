@@ -1,4 +1,4 @@
-namespace JobScheduler;
+namespace TaskScheduler;
 
 public class ScheduledTaskConfig
 {

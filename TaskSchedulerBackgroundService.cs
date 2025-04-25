@@ -1,8 +1,8 @@
-using JobScheduler.Interfaces;
+using TaskScheduler.Interfaces;
 using Microsoft.Extensions.Options;
 using NCrontab;
 
-namespace JobScheduler;
+namespace TaskScheduler;
 
 public class TaskSchedulerBackgroundService : BackgroundService
 {

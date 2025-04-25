@@ -1,7 +1,7 @@
-using JobScheduler;
-using JobScheduler.Interfaces;
-using JobScheduler.Models;
-using JobScheduler.Services;
+using TaskScheduler;
+using TaskScheduler.Interfaces;
+using TaskScheduler.Models;
+using TaskScheduler.Services;
 
 var builder = Host.CreateApplicationBuilder(args);
 builder.Services.Configure<List<ScheduledTaskConfig>>(builder.Configuration.GetSection("ScheduledJobs"));

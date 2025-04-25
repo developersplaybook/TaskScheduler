@@ -1,4 +1,4 @@
-# JobScheduler (.NET 8)
+# TaskScheduler (.NET 8)
 
 A lightweight replacement for Hangfire/Quartz based on BackgroundService and CRON expressions in appsettings.json.
 

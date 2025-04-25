@@ -1,7 +1,7 @@
-﻿using JobScheduler.Models;
+﻿using TaskScheduler.Models;
 using System.Threading.Tasks;
 
-namespace JobScheduler.Interfaces
+namespace TaskScheduler.Interfaces
 {
     public interface IJobService
     {

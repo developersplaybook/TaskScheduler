@@ -1,7 +1,7 @@
-using JobScheduler.Interfaces;
-using JobScheduler.Models;
+using TaskScheduler.Interfaces;
+using TaskScheduler.Models;
 
-namespace JobScheduler;
+namespace TaskScheduler;
 
 public class ToggleTruckJob : ITimeTriggeredJob
 {

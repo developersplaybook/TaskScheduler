@@ -1,4 +1,4 @@
-﻿namespace JobScheduler.Interfaces
+﻿namespace TaskScheduler.Interfaces
 {
     public interface IHttpClientFactoryService
     {
