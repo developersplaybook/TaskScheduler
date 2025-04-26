@@ -39,6 +39,7 @@ public class TaskSchedulerBackgroundService : BackgroundService
 
     protected override async Task ExecuteAsync(CancellationToken stoppingToken)
     {
+        using IServiceScope _scope = ExecuteAirJobOnceAtStart(stoppingToken);
 
         while (!stoppingToken.IsCancellationRequested)
         {
@@ -66,6 +67,22 @@ public class TaskSchedulerBackgroundService : BackgroundService
 
 
             await DelayUntilNextWholeMinuteAsync(stoppingToken);
+        }
+
+        IServiceScope ExecuteAirJobOnceAtStart(CancellationToken stoppingToken)
+        {
+            var _scope = _serviceProvider.CreateScope();
+            var _job = _scope.ServiceProvider
+                .GetRequiredService<IEnumerable<ITimeTriggeredJob>>()
+                .FirstOrDefault(j => j.Name == "ToggleAirJob");
+
+            if (_job != null)
+            {
+                _job.NextOccurrence = DateTime.Now.AddMinutes(1).ToString("HH:mm:ss");
+                _ = Task.Run(() => _job.ExecuteAsync(stoppingToken), stoppingToken);
+            }
+
+            return _scope;
         }
     }
 }
